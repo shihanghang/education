@@ -11,7 +11,7 @@ import java.io.Serializable;
  */
 @Data
 public class Performance implements Serializable {
-    private int peId;                   //编号
+    private int peId;                   //编号ID
     private String peName;              //姓名（学生）
     private String peCourse;            //科目
     private double peAchievement;       //成绩

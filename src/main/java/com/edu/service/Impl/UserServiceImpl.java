@@ -1,5 +1,6 @@
 package com.edu.service.Impl;
 
+
 import com.edu.mapper.UsersMapper;
 import com.edu.pojo.Users;
 import com.edu.service.UserService;
@@ -25,10 +26,5 @@ public class UserServiceImpl implements UserService {
     @Override
     public Users findUserByName(String userName) {
         return usersMapper.findUserByName(userName);
-    }
-
-    @Override
-    public String queryRoleByName(String userName) {
-        return usersMapper.queryRoleByName(userName);
     }
 }

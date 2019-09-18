@@ -11,7 +11,7 @@ import java.io.Serializable;
  */
 @Data
 public class Manpower implements Serializable {
-    private int maId;               //编号
+    private int maId;               //编号ID
     private String maLicati;        //申请时间
     private String maApplicant;     //申请人
     private String maInfo;          //描述

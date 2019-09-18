@@ -1,5 +1,6 @@
 package com.edu.mapper;
 
+
 import com.edu.pojo.Users;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -25,9 +26,4 @@ public interface UsersMapper {
      */
     public Users findUserByName(@Param("userName") String userName);
 
-    /**
-     * @param userName
-     * @return 返回此用户的身份信息
-     */
-    public String queryRoleByName(@Param("userName") String userName);
 }

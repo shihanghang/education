@@ -40,7 +40,7 @@ public class MyRealm extends AuthorizingRealm {
             //调用业务逻辑方法查询用户信息
             Users users=userService.findUserByName(userName);
             ByteSource salt = ByteSource.Util.bytes("abc");
-
+            System.out.println(users+"这是用户");
             SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(userName,users.getPassword(),salt,getName());
             return authenticationInfo;
         }

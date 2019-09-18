@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.mapper.PowersMapper">
+    <resultMap id="poMap" type="com.edu.pojo.Powers">
+        <id property="poId" column="poId"/>
+        <result property="poName" column="poName"/>
+        <result property="address" column="address"/>
+    </resultMap>
+    <sql id="po_colums">
+          poId,
+          poName,
+          address
+    </sql>
+        <select id="loadPowerByPid" parameterType="list" resultMap="poMap">
+            select
+            <include refid="po_colums"/>
+            from
+            powers
+            where
+            poId in
+            <foreach collection="list" open="(" close=")" item="poId" separator=",">
+             #{poId}
+            </foreach>
+        </select>
+    <select id="findAdressByName" parameterType="string" resultType="java.lang.String">
+        select
+        address
+        from
+        powers
+        where
+        poName = #{poName}
+    </select>
+</mapper>

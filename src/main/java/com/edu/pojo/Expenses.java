@@ -11,7 +11,7 @@ import java.io.Serializable;
  */
 @Data
 public class Expenses implements Serializable {
-    private int exId;           //编号
+    private int exId;           //编号ID
     private double exWater;     //水费
     private double exElectric;  //电费
     private double exRent;      //房租

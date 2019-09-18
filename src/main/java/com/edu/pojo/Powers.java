@@ -11,14 +11,16 @@ import java.io.Serializable;
  */
 @Data
 public class Powers implements Serializable {
-    private int poId;       //编号
+    private int poId;       //编号Id
     private String poName;  //姓名
+    private String address; //路径
 
     public Powers() {
     }
 
-    public Powers(int poId, String poName) {
+    public Powers(int poId, String poName, String address) {
         this.poId = poId;
         this.poName = poName;
+        this.address = address;
     }
 }

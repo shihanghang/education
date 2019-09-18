@@ -22,9 +22,4 @@ public interface UserService {
      * 在用户表按照名字检索用户的所有信息
      */
     public Users findUserByName(String userName);
-    /**
-     * @param userName
-     * @return 返回此用户的身份信息
-     */
-    public String queryRoleByName(@Param("userName") String userName);
 }

@@ -10,9 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class ViewController {
-    @RequestMapping("index")
-    public String index(){
-        return "index";
+    @RequestMapping("opop")
+    public String opop(){
+        return "login";
     }
-}
+    @RequestMapping("welcomeview")
+    public String welcomeview(){
+        return "welcome";
+    }
+    @RequestMapping("savepayview")
+    public String savePayView(){
+        return "savepay";
+    }
 
+}

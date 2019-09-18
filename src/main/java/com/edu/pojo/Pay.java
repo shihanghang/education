@@ -11,7 +11,7 @@ import java.io.Serializable;
  */
 @Data
 public class Pay implements Serializable {
-    private int paId;           //编号
+    private int paId;           //编号ID
     private String paName;      //姓名
     private String paMonth;     //月份
     private double paSubwa;     //饮食补助
