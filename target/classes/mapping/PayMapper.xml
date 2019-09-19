@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.edu.mapper.PayMapper">
+
     <resultMap id="PayMap" type="com.edu.pojo.Pay">
         <id property="paId" column="paId"/>
         <result property="paName" column="paName"/>
@@ -93,7 +94,7 @@
         </where>
     </update>
 
-    <!--删除人员薪资-->
+    <!--删除所选对象薪资-->
     <delete id="deletePay" parameterType="list">
         delete
         from

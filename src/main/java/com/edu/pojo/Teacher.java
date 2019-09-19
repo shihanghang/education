@@ -17,7 +17,7 @@ public class Teacher implements Serializable {
     private int teAge;          //年龄
     private String teEducation; //学历
     private String teState;     //状态
-    private String teLeavel;    //级别
+    private String teLevel;    //级别
     private String teSubject;   //科目
     private String teTimeda;    //任职时间
 
@@ -33,7 +33,7 @@ public class Teacher implements Serializable {
         this.teAge = teAge;
         this.teEducation = teEducation;
         this.teState = teState;
-        this.teLeavel = teLeavel;
+        this.teLevel = teLeavel;
         this.teSubject = teSubject;
         this.teTimeda = teTimeda;
     }

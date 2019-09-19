@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.mapper.ExpensesMapper">
+
+    <resultMap id="ExpensesMap" type="com.edu.pojo.Expenses">
+        <id property="exId" column="exId"/>
+        <result property="exWater" column="exWater"/>
+        <result property="exElectric" column="exElectric"/>
+        <result property="exRent" column="exRent"/>
+        <result property="exProperty" column="exProperty"/>
+        <result property="exLogistics" column="exLogistics"/>
+        <result property="exInfo" column="exInfo"/>
+        <result property="exState" column="exState"/>
+    </resultMap>
+
+    <sql id="Expenses_colums">
+        exId,
+        exWater,
+        exElectric,
+        exRent,
+        exProperty,
+        exLogistics,
+        exInfo,
+        exState
+    </sql>
+
+    <!--查询所有的后勤报销信息-->
+    <select id="findAllExpenses" resultMap="ExpensesMap">
+        select
+        <include refid="Expenses_colums"/>
+        from
+        expenses
+    </select>
+
+    <!--添加后勤报销信息-->
+    <insert id="saveExpenses" parameterType="Expenses">
+        insert
+        into
+        expenses
+        values(default,#{exWater},#{exElectric},#{exRent},#{exProperty},#{exLogistics},#{exInfo},#{exState})
+    </insert>
+
+    <!--根据对象id查询对象的后勤报销信息-->
+    <select id="selectExpensesById" parameterType="int" resultType="Expenses">
+        select
+        <include refid="Expenses_colums"/>
+        from
+        expenses
+        <where>
+            exId=#{exId}
+        </where>
+    </select>
+
+    <!--修改对象的后勤报销信息-->
+    <update id="updateExpenses" parameterType="map">
+        update
+        expenses
+        <set>
+            <if test="exWater!=null">
+                exWater=#{exWater},
+            </if>
+            <if test="exElectric!=null">
+                exElectric=#{exElectric},
+            </if>
+            <if test="exRent!=null">
+                exRent=#{exRent},
+            </if>
+            <if test="exProperty!=null">
+                exProperty=#{exProperty},
+            </if>
+            <if test="exLogistics!=null">
+                exLogistics=#{exLogistics},
+            </if>
+            <if test="exInfo!=null">
+                exInfo=#{exInfo},
+            </if>
+            <if test="exState!=null">
+                exState=#{exState}
+            </if>
+        </set>
+        <where>
+            exId=#{exId}
+        </where>
+    </update>
+
+    <!--删除所选对象的后勤报销信息-->
+    <delete id="deleteExpenses" parameterType="list">
+        delete
+        from
+        expenses
+        where
+        exId
+        in
+        <foreach collection="list" item="ids" separator="," open="(" close=")">
+            #{ids}
+        </foreach>
+    </delete>
+</mapper>

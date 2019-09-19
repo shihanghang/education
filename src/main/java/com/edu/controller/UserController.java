@@ -107,8 +107,18 @@ public class UserController {
             return "redirect:payview";
         }
         //后勤报销
+        if(poName.equals("后勤报销")){
+            return "redirect:expensesview";
+        }
         //人力申请
+        if(poName.equals("人力申请")){
+            return "redirect:manpowerview";
+        }
+
         //成绩管理
+        if (poName.equals("成绩管理")){
+            return "redirect:performanceview";
+        }
         //权限管理
         return "error";
     }

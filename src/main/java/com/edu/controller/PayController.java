@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class PayController {
 
     //薪资补助
     @RequestMapping("payview")
-    public String payview(Model model){
+    public String payView(Model model){
         List<Pay> payList = payService.findAllPay();
         model.addAttribute("payList",payList);
         String poName="薪资补助";
@@ -40,7 +39,7 @@ public class PayController {
         return count>0?"redirect:payview":"error";
     }
 
-    //根据I的查询pay对象
+    //根据ID查询pay对象
     @RequestMapping("selectpaybyid")
     public String selectPayById(int paId,Model model){
         Pay pays = payService.selectPayById(paId);
@@ -57,10 +56,10 @@ public class PayController {
     }
 
     //删除人员薪资
-    @ResponseBody
+    //@ResponseBody
     @RequestMapping("deletepay")
     public String deletePay(@RequestParam("ids") List<Integer> ids){
         int count = payService.deletePay(ids);
-        return count>0?"ojbk":"wrong";
+        return count>0?"redirect:payview":"error";
     }
 }

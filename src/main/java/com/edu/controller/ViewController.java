@@ -22,5 +22,16 @@ public class ViewController {
     public String savePayView(){
         return "savepay";
     }
-
+    @RequestMapping("saveexpensesview")
+    public String saveExpensesView(){
+        return "saveexpenses";
+    }
+    @RequestMapping("savemanpowerview")
+    public String saveManPowerView(){
+        return "savemanpower";
+    }
+    @RequestMapping("saveperformanceview")
+    public String savePerformanceView(){
+        return "saveperformance";
+    }
 }
