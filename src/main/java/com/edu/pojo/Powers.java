@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Data
 public class Powers implements Serializable {
     private int poId;       //编号Id
-    private String poName;  //姓名
+    private String poName;  //权限名
     private String address; //路径
 
     public Powers() {

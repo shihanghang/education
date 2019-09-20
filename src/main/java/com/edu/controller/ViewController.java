@@ -34,4 +34,12 @@ public class ViewController {
     public String savePerformanceView(){
         return "saveperformance";
     }
+    @RequestMapping("savepowersview")
+    public String savePowersView(){
+        return "savepowers";
+    }
+    @RequestMapping("savequitview")
+    public String saveQuitView(){
+        return "savequit";
+    }
 }

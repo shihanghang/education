@@ -21,7 +21,7 @@
                     <h5>薪资补助</h5>
                 </div>
                 <div class="ibox-content">
-                    <form action="/deletepay" method="post">
+                    <form action="deletepay" method="post">
                         <div>
                             <a href="savepayview" title="添加">
                                 <button type="button" class="btn btn-success" style="margin-left: 90%; float: left">添加</button>
@@ -99,21 +99,6 @@
                 this.checked=bool;
             });
         });
-        /*$("#delete").click(function () {
-            var poIds=$("#box1").val();
-            var ids=[];
-            for (var i=0;i<poIds.length;i++){
-                ids[i]=poIds[i];
-            }
-            alert(ids);
-            $.post("deletepay",{"ids":ids},function (data) {
-                if(date=="ojbk"){
-                    alert("删除成功");
-                }else{
-                    alert("删除失败");
-                }
-            });
-        });*/
     });
 
     $(document).ready(function () {

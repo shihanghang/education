@@ -120,7 +120,7 @@
                     <h5>添加performance</h5>
                 </div>
                 <div class="ibox-content">
-                    <form class="form-horizontal"  action="/saveperformance"  method="post">
+                    <form class="form-horizontal"  action="saveperformance"  method="post">
                         <div class="form-group">
                             <input type="hidden" name="peId" id="productid" value="116">
                             <label class="col-sm-3 control-label"></label>
@@ -147,7 +147,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"><span style="color:red;">*</span>成绩：</label>
                             <div class="col-sm-8">
-                                <input id="spmc3"  name="peAchievement"  type="text" placeholder=" 请输入···" class="form-control">
+                                <input id="spmc3"  name="peAchievement"  type="text" onkeyup="value=value.replace(/[^\d.]/g,'')"  onblur="value=value.replace(/[^\d.]/g,'') " placeholder=" 请输入···" class="form-control">
                                 <span class="help-block m-b-none"></span>
                             </div>
                         </div>
@@ -177,5 +177,7 @@
         </div>
     </div>
 </div>
+<!-- 自定义js -->
+<script src="js/content.js"></script>
 </body>
 </html>

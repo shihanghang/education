@@ -1,5 +1,7 @@
 package com.edu.pojo;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -7,6 +9,7 @@ import java.io.Serializable;
  * @Date: 2019/9/17 18:07
  * @Description:请假申请表
  */
+@Data
 public class Vacation implements Serializable {
     private int vaId;           //编号ID
     private String vaName;      //姓名

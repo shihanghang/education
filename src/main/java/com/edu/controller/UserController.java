@@ -102,6 +102,9 @@ public class UserController {
         //请假申请
 
         //离职申请
+        if(poName.equals("离职申请")){
+            return "redirect:quitview";
+        }
         //薪资补助
         if(poName.equals("薪资补助")){
             return "redirect:payview";
@@ -120,6 +123,9 @@ public class UserController {
             return "redirect:performanceview";
         }
         //权限管理
+        if (poName.equals("权限管理")){
+            return "redirect:powersview";
+        }
         return "error";
     }
 

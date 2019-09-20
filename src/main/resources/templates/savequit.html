@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>修改</title>
+    <title>添加</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="shortcut icon" href="favicon.ico">
@@ -27,7 +27,7 @@
     <link type="text/css" rel="stylesheet" href="css/laydate1.css">
     <link href="css/sweetalert.css" rel="stylesheet">
     <link rel="stylesheet" href="themes/default/default.css" />
-    <script charset="utf-8" src="tw/kindeditor-min.js"></script>
+    <script charset="utf-8" src="js/kindeditor-min.js"></script>
     <script charset="utf-8" src="lang/zh_CN.js"></script>
     <script>
         KindEditor.ready(function(K) {
@@ -115,54 +115,43 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>修改expenses</h5>
+                    <h5>添加quit</h5>
                 </div>
                 <div class="ibox-content">
-                    <form class="form-horizontal"  action="updatemanpower"  method="post" th:each="m:${manpowers}">
+                    <form class="form-horizontal"  action="savequit"  method="post">
                         <div class="form-group">
-                            <input type="hidden" name="maId" id="productid" th:value="${m.maId}">
+                            <input type="hidden" name="quId" id="productid" value="116">
                             <label class="col-sm-3 control-label"></label>
                             <div class="col-sm-8" style="color: red;font-size: 15px">
 
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"><span style="color:red;">*</span>姓名：</label>
+                            <div class="col-sm-8">
+                                <input id="spmc"  name="quName" type="text" placeholder=" 请输入···" class="form-control">
+                                <span class="help-block m-b-none"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"><span style="color:red;">*</span>情况说明：</label>
+                            <div class="col-sm-8">
+                                <input id="spmc7"  name="quContent" type="text" placeholder=" 请输入···" class="form-control">
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"><span style="color:red;">*</span>申请时间：</label>
                             <div class="col-sm-8">
-                                <input id="spmc1"  name="maLicati"  type="text" class="form-control" th:value="${m.maLicati}">
-                                <span class="help-block m-b-none"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"><span style="color:red;">*</span>申请人：</label>
-                            <div class="col-sm-8">
-                                <input id="spmc2"  name="maApplicant"  type="text" class="form-control" th:value="${m.maApplicant}">
-                                <span class="help-block m-b-none"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"><span style="color:red;">*</span>描述：</label>
-                            <div class="col-sm-8">
-                                <input id="spmc3"  name="maInfo"  type="text" class="form-control" th:value="${m.maInfo}">
-                                <span class="help-block m-b-none"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label"><span style="color:red;">*</span>联系电话：</label>
-                            <div class="col-sm-8">
-                                <input id="spmc4"  name="maTel"  type="text" onkeyup="value=value.replace(/[^\d.]/g,'')"  onblur="value=value.replace(/[^\d.]/g,'') " class="form-control" th:value="${m.maTel}">
-                                <span class="help-block m-b-none"></span>
+                                <input id="spmc2"  name="quTime" type="text" placeholder=" 请输入···" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label"><span style="color:red;">*</span>状态：</label>
                             <div class="col-sm-8">
-                                <input id="spmc5"  name="maState"  type="text" class="form-control" th:value="${m.maState}">
-                                <span class="help-block m-b-none"></span>
+                                <input id="spmc1" readOnly="true" name="quState" value="未审批" type="text" placeholder="未审批" class="form-control">
                             </div>
                         </div>
-
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-8">
                                 <button id="submit" class="btn btn-sm btn-info" type="submit">确认保存</button>

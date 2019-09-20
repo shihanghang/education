@@ -29,8 +29,6 @@
     <link rel="stylesheet" href="themes/default/default.css" />
     <script charset="utf-8" src="tw/kindeditor-min.js"></script>
     <script charset="utf-8" src="lang/zh_CN.js"></script>
-    <!-- 自定义js -->
-    <script src="js/content.js"></script>
     <script>
         KindEditor.ready(function(K) {
             K.create('#content1', {
@@ -120,7 +118,7 @@
                     <h5>修改performance</h5>
                 </div>
                 <div class="ibox-content">
-                    <form class="form-horizontal"  action="/updateperformance"  method="post" th:each="pp:${performances}">
+                    <form class="form-horizontal"  action="updateperformance"  method="post" th:each="pp:${performances}">
                         <div class="form-group">
                             <input type="hidden" name="peId" id="productid" th:value="${pp.peId}">
                             <label class="col-sm-3 control-label"></label>
@@ -146,7 +144,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"><span style="color:red;">*</span>成绩：</label>
                             <div class="col-sm-8">
-                                <input id="spmc3"  name="peAchievement"  type="text" class="form-control" th:value="${pp.peAchievement}">
+                                <input id="spmc3"  name="peAchievement"  type="text" onkeyup="value=value.replace(/[^\d.]/g,'')"  onblur="value=value.replace(/[^\d.]/g,'') " class="form-control" th:value="${pp.peAchievement}">
                                 <span class="help-block m-b-none"></span>
                             </div>
                         </div>
@@ -176,5 +174,7 @@
         </div>
     </div>
 </div>
+<!-- 自定义js -->
+<script src="js/content.js"></script>
 </body>
 </html>
