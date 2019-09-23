@@ -42,4 +42,28 @@ public class ViewController {
     public String saveQuitView(){
         return "savequit";
     }
+    @RequestMapping("addStuview")
+    public String addStuview(){
+        return "addStu";
+    }
+    @RequestMapping("addTeaview")
+    public String addTeaview(){
+        return "addTea";
+    }
+    @RequestMapping("addAcaview")
+    public String addAcaview(){
+        return "addAca";
+    }
+    @RequestMapping("addAttview")
+    public String addAttview(){
+        return "addAtt";
+    }
+    @RequestMapping("addAStuview")
+    public String addAStuview(){
+        return "addAStu";
+    }
+    @RequestMapping("addVacview")
+    public String addVacview(){
+        return "addVac";
+    }
 }

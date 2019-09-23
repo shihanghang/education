@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.mapper.TeacherMapper">
+    <resultMap id="teaMap" type="com.edu.pojo.Teacher">
+        <id property="teId" column="teId"/>
+        <result property="teName" column="teName"/>
+        <result property="teSex" column="teSex"/>
+        <result property="teAge" column="teAge"/>
+        <result property="teEducation" column="teEducation"/>
+        <result property="teState" column="teState"/>
+        <result property="teLevel" column="teLevel"/>
+        <result property="teSubject" column="teSubject"/>
+        <result property="teTimeda" column="teTimeda"/>
+    </resultMap>
+    <sql id="tea_colums">
+          teId,
+          teName,
+          teSex,
+          teAge,
+          teEducation,
+          teState,
+          teLevel,
+          teSubject,
+          teTimeda
+    </sql>
+    <select id="laodAllTeacher" resultMap="teaMap">
+        select
+        <include refid="tea_colums"/>
+        from
+        teacher
+    </select>
+    <insert id="addTeacher" parameterType="teacher">
+        insert into teacher values (default ,#{teName},#{teSex},#{teAge},#{teEducation},#{teState},#{teLevel},#{teSubject},#{teTimeda})
+    </insert>
+    <delete id="deleTea" parameterType="int">
+         delete from teacher where teId=#{id}
+    </delete>
+    <select id="loadTeaById" parameterType="int" resultMap="teaMap">
+        select
+        <include refid="tea_colums"/>
+        from  teacher where teId=#{id}
+    </select>
+    <update id="updataTea" parameterType="Teacher">
+        update teacher
+        <set>
+            <if test="teName != null">
+                teName=#{teName} ,
+            </if>
+            <if test="teSex != null">
+                teSex=#{teSex} ,
+            </if>
+            <if test="teAge != null">
+                teAge=#{teAge} ,
+            </if>
+            <if test="teEducation != null">
+                teEducation=#{teEducation} ,
+            </if>
+            <if test="teState != null">
+                teState=#{teState} ,
+            </if>
+            <if test="teLevel != null">
+                teLevel=#{teLevel} ,
+            </if>
+            <if test="teSubject != null">
+                teSubject=#{teSubject},
+            </if>
+            <if test="teTimeda != null">
+                teTimeda=#{teTimeda}
+            </if>
+        </set>
+        where teId=#{teId}
+    </update>
+</mapper>

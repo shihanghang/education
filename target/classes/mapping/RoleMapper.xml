@@ -10,4 +10,15 @@
           roleId,
           roleName
     </sql>
+
+    <!--根据角色名查询角色id-->
+    <select id="loadRoleNameById" parameterType="int" resultType="string">
+        select
+        roleName
+        from
+        roles
+        <where>
+            roleId=#{roleId}
+        </where>
+    </select>
 </mapper>

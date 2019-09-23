@@ -16,4 +16,6 @@ public interface R_P_Mapper {
      * @return 根据用户对应的角色id查询用户对应的权限功能id
      */
     public List<Integer> loadPidByRid(int roleId);
+
+
 }

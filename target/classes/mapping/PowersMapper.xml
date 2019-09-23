@@ -36,6 +36,44 @@
         poName = #{poName}
     </select>
 
+    <!--根据id查询权限名-->
+    <select id="findNameById" parameterType="int" resultType="string">
+        select
+        poName
+        from
+        powers
+        <where>
+            poId=#{poId}
+        </where>
+    </select>
+
+
+    <!--根据id查询权限-->
+    <select id="loadPnameByPid" parameterType="list" resultType="string">
+        select
+        poName
+        from
+        powers
+        where
+        poId in
+        <foreach collection="list" open="(" close=")" item="poId" separator=",">
+            #{poId}
+        </foreach>
+    </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!--查询所有的权限-->
     <select id="findAllPowers" resultMap="poMap">
         select
@@ -92,4 +130,5 @@
             #{ids}
         </foreach>
     </delete>
+
 </mapper>

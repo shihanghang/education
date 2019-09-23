@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
 /**
- * @Auther: ZzuI
+ * @Auther: 王玺瑞
  * @Date: 2019/9/16 20:35
  * @Description:
  */
@@ -25,6 +25,31 @@ public interface PowersMapper {
      * @return  返回值为对应的地址
      */
     public String findAdressByName(String poName);
+
+    /**
+     *根据权限id查询权限名
+     * @param poId  参数值为权限id
+     * @return  返回值为权限名
+     */
+    public String findNameById(int poId);
+
+    /**
+     * 根据权限id查询对应的权限名
+     * @param poId  权限id
+     * @return  返回值为权限名
+     */
+    public List<String> loadPnameByPid(List<Integer> poId);
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * 查询所有的权限信息

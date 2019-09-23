@@ -1,6 +1,5 @@
 package com.edu.controller;
 
-import com.edu.pojo.Pay;
 import com.edu.pojo.Powers;
 import com.edu.pojo.Users;
 import com.edu.service.*;
@@ -13,9 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.naming.Name;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -44,7 +44,6 @@ public class UserController {
     }
     @RequestMapping("Login2")
     public String loginshow(Users user, Model model){
-        System.out.println(user+"fanhui");
         String userName=user.getUserName();
         String password=user.getPassword();
         session.setAttribute("user",user);
@@ -92,14 +91,28 @@ public class UserController {
     public String caoZuo(String poName){
         //学生管理表单
         if (poName.equals("学生管理")){
-            String stu=powersService.findAdressByName(poName);
-            return stu;
+            return "redirect:stuview";
         }
         //教师管理
+        if (poName.equals("教师管理")){
+            return "redirect:teaview";
+        }
         //教务管理
+        if (poName.equals("教务管理")){
+            return "redirect:acaview";
+        }
         //教师出勤
+        if (poName.equals("教师出勤")){
+            return "redirect:attview";
+        }
         //学生出勤
+        if (poName.equals("学生出勤")){
+            return "redirect:Astuview";
+        }
         //请假申请
+        if (poName.equals("请假申请")){
+            return "redirect:vacview";
+        }
 
         //离职申请
         if(poName.equals("离职申请")){

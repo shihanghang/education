@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.mapper.AttendanceMapper">
+    <resultMap id="attMap" type="com.edu.pojo.Attendance">
+        <id property="atId" column="atId"/>
+        <result property="atName" column="atName"/>
+        <result property="atWorkday" column="atWorkday"/>
+        <result property="atLeaveday" column="atLeaveday"/>
+        <result property="atState" column="atState"/>
+    </resultMap>
+    <sql id="atts">
+          atId,
+          atName,
+          atWorkday,
+          atLeaveday,
+          atState
+    </sql>
+    <select id="laodAllAttendance" resultMap="attMap">
+        select
+        <include refid="atts"/>
+        from
+        attendance
+    </select>
+    <insert id="addAttendance" parameterType="Attendance">
+        insert into attendance values (default ,#{atName},#{atWorkday},#{atLeaveday},#{atState})
+    </insert>
+    <delete id="deleAtt" parameterType="int">
+        delete from attendance where atId=#{id}
+    </delete>
+    <select id="loadAttById" parameterType="int" resultMap="attMap">
+        select
+        <include refid="atts"/>
+        from attendance where  atId=#{id}
+    </select>
+    <update id="updataAtt" parameterType="Attendance">
+        update attendance
+        <set>
+            <if test="atName != null">
+                atName=#{atName} ,
+            </if>
+            <if test="atWorkday != null">
+                atWorkday=#{atWorkday} ,
+            </if>
+            <if test="atLeaveday != null">
+                atLeaveday=#{atLeaveday} ,
+            </if>
+            <if test="atState != null">
+                atState=#{atState}
+            </if>
+        </set>
+        where atId=#{atId}
+    </update>
+</mapper>

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 public class U_R_ServiceImpl implements U_R_Service {
     @Autowired
     private U_R_Mapper u_r_mapper;
+
     @Override
     public int loadRidbyUid(int userId) {
         return u_r_mapper.loadRidbyUid(userId);

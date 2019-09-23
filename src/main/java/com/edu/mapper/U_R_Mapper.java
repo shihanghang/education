@@ -14,4 +14,6 @@ public interface U_R_Mapper {
      * @return 根据用户id查询对应角色id
      */
     public int loadRidbyUid(int userId);
+
+
 }
