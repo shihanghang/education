@@ -1,8 +1,6 @@
 package com.edu.controller;
 
-import com.edu.pojo.AStudent;
 import com.edu.pojo.Vacation;
-import com.edu.service.AStudentService;
 import com.edu.service.PowersService;
 import com.edu.service.VacationService;
 import org.springframework.beans.factory.annotation.Autowired;
