@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.mapper.QuitMapper">
+
+    <resultMap id="QuitMap" type="com.edu.pojo.Quits">
+        <id property="quId" column="quId"/>
+        <result property="quName" column="quName"/>
+        <result property="quContent" column="quContent"/>
+        <result property="quTime" column="quTime"/>
+        <result property="quState" column="quState"/>
+    </resultMap>
+
+    <sql id="Quit_colums">
+        quId,
+        quName,
+        quContent,
+        quTime,
+        quState
+    </sql>
+
+    <!--查询所有的离职申请-->
+    <select id="findAllQuit" resultMap="QuitMap">
+        select
+        <include refid="Quit_colums"/>
+        from
+        quits
+    </select>
+
+    <!--添加新的离职申请-->
+    <insert id="saveQuit" parameterType="Quits">
+        insert
+        into
+        quits
+        values(default,#{quName},#{quContent},#{quTime},#{quState})
+    </insert>
+
+    <!--根据对象id查询对应的离职申请-->
+    <select id="selectQuitById" parameterType="int" resultType="Quits">
+        select
+        <include refid="Quit_colums"/>
+        from
+        quits
+        <where>
+            quId=#{quId}
+        </where>
+    </select>
+
+    <!--修改所选对象的离职申请-->
+    <update id="updateQuit" parameterType="map">
+        update
+        quits
+        <set>
+            <if test="quName!=null">
+                quName=#{quName},
+            </if>
+            <if test="quContent!=null">
+                quContent=#{quContent},
+            </if>
+            <if test="quTime!=null">
+                quTime=#{quTime},
+            </if>
+            <if test="quState!=null">
+                quState=#{quState}
+            </if>
+        </set>
+        <where>
+            quId=#{quId}
+        </where>
+    </update>
+
+    <!--删除所选对象的离职申请-->
+    <delete id="deleteQuit" parameterType="list">
+        delete
+        from
+        quits
+        where
+        quId
+        in
+        <foreach collection="list" item="ids" separator="," open="(" close=")">
+            #{ids}
+        </foreach>
+    </delete>
+</mapper>

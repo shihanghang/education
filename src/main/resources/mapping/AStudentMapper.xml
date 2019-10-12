@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.mapper.AStudentMapper">
+    <resultMap id="astuMap" type="com.edu.pojo.AStudent">
+        <id property="asId" column="asId"/>
+        <result property="asName" column="asName"/>
+        <result property="asWorkday" column="asWorkday"/>
+        <result property="asLeaveday" column="asLeaveday"/>
+        <result property="asState" column="asState"/>
+    </resultMap>
+    <sql id="astu_colums">
+        asId,
+        asName,
+        asWorkday,
+        asLeaveday,
+        asState
+    </sql>
+    <select id="loadAllAStu" resultMap="astuMap">
+        select
+        <include refid="astu_colums"/>
+        from
+        astudent
+    </select>
+    <insert id="addAStudent" parameterType="AStudent">
+        insert into astudent values (default ,#{asName},#{asWorkday},#{asLeaveday},#{asState})
+    </insert>
+    <delete id="deleAStu" parameterType="int">
+        delete from astudent where asId=#{id}
+    </delete>
+    <select id="loadAStuById" resultMap="astuMap" parameterType="int">
+        select
+        <include refid="astu_colums"/>
+        from
+        astudent where asId=#{id}
+    </select>
+    <update id="updataAStu" parameterType="AStudent">
+        update astudent
+        <set>
+            <if test="asName != null">
+                asName=#{asName} ,
+            </if>
+            <if test="asWorkday != null">
+                asWorkday=#{asWorkday} ,
+            </if>
+            <if test="asLeaveday != null">
+                asLeaveday=#{asLeaveday} ,
+            </if>
+            <if test="asState != null">
+                asState=#{asState}
+            </if>
+        </set>
+        where asId=#{asId}
+    </update>
+</mapper>

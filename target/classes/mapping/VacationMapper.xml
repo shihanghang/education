@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.mapper.VacationMapper">
+    <resultMap id="vacmap" type="com.edu.pojo.Vacation">
+        <id property="vaId" column="vaId"/>
+        <result property="vaName" column="vaName"/>
+        <result property="vaContent" column="vaContent"/>
+        <result property="vaTime" column="vaTime"/>
+        <result property="vaState" column="vaState"/>
+    </resultMap>
+    <sql id="vac">
+        vaId,
+        vaName,
+        vaContent,
+        vaTime,
+        vaState
+    </sql>
+    <select id="loadAllVac" resultMap="vacmap">
+        select
+        <include refid="vac"/>
+        from
+        vacation
+    </select>
+    <insert id="addVac" parameterType="Vacation">
+        insert into vacation values (default ,#{vaName},#{vaContent},#{vaTime},#{vaState})
+    </insert>
+    <delete id="deleVac" parameterType="int">
+        delete from vacation where vaId=#{id}
+    </delete>
+    <select id="loadVacById" resultMap="vacmap" parameterType="int">
+        select
+        <include refid="vac"/>
+        from
+        vacation where vaId=#{vaId}
+    </select>
+    <update id="updataVac" parameterType="Vacation">
+        update vacation
+        <set>
+            <if test="vaName != null">
+                vaName=#{vaName} ,
+            </if>
+            <if test="vaContent != null">
+                vaContent=#{vaContent} ,
+            </if>
+            <if test="vaTime != null">
+                vaTime=#{vaTime} ,
+            </if>
+            <if test="vaState != null">
+                vaState=#{vaState}
+            </if>
+        </set>
+        where vaId=#{vaId}
+    </update>
+</mapper>

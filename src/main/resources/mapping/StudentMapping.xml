@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.mapper.StudentMapper">
+    <resultMap id="stuMap" type="com.edu.pojo.Student">
+        <id property="stId" column="stId"/>
+        <result property="stName" column="stName"/>
+        <result property="stSex" column="stSex"/>
+        <result property="stAge" column="stAge"/>
+        <result property="stGrade" column="stGrade"/>
+        <result property="stState" column="stState"/>
+        <result property="stTuition" column="stTuition"/>
+        <result property="stTimeda" column="stTimeda"/>
+    </resultMap>
+    <sql id="stu_colums">
+        stId,
+        stName,
+        stSex,
+        stAge,
+        stGrade,
+        stState,
+        stTuition,
+        stTimeda
+    </sql>
+    <select id="loadAllStu" resultMap="stuMap">
+        select
+        <include refid="stu_colums"/>
+        from
+        student
+    </select>
+    <insert id="addStudent" parameterType="Student">
+        insert into student values (default ,#{stName},#{stSex},#{stAge},#{stGrade},#{stState},#{stTuition},#{stTimeda})
+    </insert>
+    <delete id="deleStu" parameterType="int">
+        delete from student where stId=#{id}
+    </delete>
+    <select id="loadStuById" parameterType="int" resultMap="stuMap">
+        select
+        <include refid="stu_colums"/>
+        from student where stId=#{id}
+    </select>
+    <update id="updataStu" parameterType="Student">
+        update student
+        <set>
+            <if test="stName != null">
+                stName=#{stName} ,
+            </if>
+            <if test="stSex != null">
+                stSex=#{stSex} ,
+            </if>
+            <if test="stAge != null">
+                stAge=#{stAge} ,
+            </if>
+            <if test="stGrade != null">
+                stGrade=#{stGrade} ,
+            </if>
+            <if test="stState != null">
+                stState=#{stState} ,
+            </if>
+            <if test="stTuition != null">
+                stTuition=#{stTuition} ,
+            </if>
+            <if test="stTimeda != null">
+                stTimeda=#{stTimeda}
+            </if>
+        </set>
+        where stId=#{stId}
+    </update>
+</mapper>

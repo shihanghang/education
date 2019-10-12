@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edu.mapper.PowersMapper">
+    <resultMap id="poMap" type="com.edu.pojo.Powers">
+        <id property="poId" column="poId"/>
+        <result property="poName" column="poName"/>
+        <result property="address" column="address"/>
+    </resultMap>
+    <sql id="po_colums">
+        poId,
+        poName,
+        address
+    </sql>
+
+    <!--根据id查询权限-->
+    <select id="loadPowerByPid" parameterType="list" resultMap="poMap">
+        select
+        <include refid="po_colums"/>
+        from
+        powers
+        where
+        poId in
+        <foreach collection="list" open="(" close=")" item="poId" separator=",">
+            #{poId}
+        </foreach>
+    </select>
+
+    <!--根据名称查询对应的地址-->
+    <select id="findAdressByName" parameterType="string" resultType="java.lang.String">
+        select
+        address
+        from
+        powers
+        where
+        poName = #{poName}
+    </select>
+
+    <!--根据id查询权限名-->
+    <select id="findNameById" parameterType="int" resultType="string">
+        select
+        poName
+        from
+        powers
+        <where>
+            poId=#{poId}
+        </where>
+    </select>
+
+
+    <!--根据id查询权限-->
+    <select id="loadPnameByPid" parameterType="list" resultType="string">
+        select
+        poName
+        from
+        powers
+        where
+        poId in
+        <foreach collection="list" open="(" close=")" item="poId" separator=",">
+            #{poId}
+        </foreach>
+    </select>
+
+
+    <!--查询所有的权限-->
+    <select id="findAllPowers" resultMap="poMap">
+        select
+        <include refid="po_colums"/>
+        from
+        powers
+    </select>
+
+    <!--添加新的权限-->
+    <insert id="savePowers" parameterType="Powers">
+        insert
+        into
+        powers
+        values(default,#{poName},#{address})
+    </insert>
+
+    <!--根据id查询对应对象的权限-->
+    <select id="selectPowersById" parameterType="int" resultType="Powers">
+        select
+        <include refid="po_colums"/>
+        from
+        powers
+        <where>
+            poId=#{poId}
+        </where>
+    </select>
+
+    <!--修改对象的权限信息-->
+    <update id="updatePowers" parameterType="map">
+        update
+        powers
+        <set>
+            <if test="poName!=null">
+                poName=#{poName},
+            </if>
+            <if test="address!=null">
+                address=#{address}
+            </if>
+        </set>
+        <where>
+            poId=#{poId}
+        </where>
+    </update>
+
+    <!--删除所选对象的权限信息-->
+    <delete id="deletePowers" parameterType="list">
+        delete
+        from
+        powers
+        where
+        poId
+        in
+        <foreach collection="list" item="ids" separator="," open="(" close=")">
+            #{ids}
+        </foreach>
+    </delete>
+
+</mapper>
